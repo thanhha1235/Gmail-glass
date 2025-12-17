@@ -592,6 +592,7 @@
             font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 100%;
         }
 
         .product-btn:hover {
@@ -1232,7 +1233,7 @@
                         <div class="content-area">
                             <div class="products-grid">
                                 <!-- Product Card 1 -->
-                                <div class="product-card" data-product-id="1">
+                                <div class="product-card" data-product-id="1" id="product-1">
                                     <div class="product-image">
                                         <img src="images/product11.jpg" alt="">
                                     </div>
@@ -1244,18 +1245,17 @@
                                         </div>
                                         <div class="product-footer">
                                             <span class="product-price">8.000đ</span>
-                                            <div class="product-actions">
-                                                <button class="product-btn">Thông tin</button>
+                                         
+                                        </div>
+                                          <div class="product-actions">
+                                                <button class="product-btn">Chi tiết sản phẩm</button>
 
                                             </div>
-                                        </div>
-                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                            rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
                                     </div>
                                 </div>
 
                                 <!-- Product Card 2 -->
-                                <div class="product-card" data-product-id="2">
+                                <div class="product-card" data-product-id="2" id="product-2">
                                     <div class="product-image">
                                         <img src="images/product12.jpg" alt="">
                                     </div>
@@ -1267,19 +1267,18 @@
                                         </div>
                                         <div class="product-footer">
                                             <span class="product-price">9.000đ</span>
-                                            <div class="product-actions">
-                                                <button class="product-btn">Thông tin</button>
-
-                                            </div>
+                                           
 
                                         </div>
-                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                            rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
+                                         <div class="product-actions">
+                                                <button class="product-btn">Chi tiết sản phẩm</button>
+
+                                            </div>
                                     </div>
                                 </div>
 
                                 <!-- Product Card 3 -->
-                                <div class="product-card" data-product-id="3">
+                                <div class="product-card" data-product-id="3" id="product-3">
                                     <div class="product-image">
                                         <img src="images/product6.jpeg" alt="">
                                     </div>
@@ -1291,13 +1290,12 @@
                                         </div>
                                         <div class="product-footer">
                                             <span class="product-price">10.000đ</span>
-                                            <div class="product-actions">
-                                                <button class="product-btn">Thông tin</button>
-        
-                                            </div>
+                                           
                                         </div>
-                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                            rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
+                                        <div class="product-actions">
+                                                <button class="product-btn">Chi tiết sản phẩm</button>
+
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="product-card" data-product-id="4">
@@ -1306,17 +1304,19 @@
                                     </div>
                                     <div class="product-info">
                                         <div>
-                                            <div class="product-name">GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE
-                                                TRÂU BÒ</div>
+                                            <div class="product-name">Gmail hàng new chưa qua dịch vụ-reg tay-ip việt- live
+trâu bò</div>
                                             <!-- <span class="product-stock unavailable">Hết hàng</span> -->
                                             <span class="product-stock available">Còn hàng</span>
                                         </div>
                                         <div class="product-footer">
                                             <span class="product-price">10.000đ</span>
-                                            <button class="product-btn">Thông tin</button>
+                                            
                                         </div>
-                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                            rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
+                                        <div class="product-actions">
+                                                <button class="product-btn">Chi tiết sản phẩm</button>
+
+                                            </div>
                                     </div>
                                 </div>
 
@@ -1333,13 +1333,12 @@
                                         </div>
                                         <div class="product-footer">
                                             <span class="product-price">11.000đ</span>
-                                            <div class="product-actions">
-                                                <button class="product-btn">Thông tin</button>
+                                           
+                                        </div>
+                                       <div class="product-actions">
+                                                <button class="product-btn">Chi tiết sản phẩm</button>
 
                                             </div>
-                                        </div>
-                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                            rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
                                     </div>
                                 </div>
 
@@ -1357,9 +1356,11 @@
                                         <div class="product-footer">
                                             <span class="product-price"></span>
                                             <div class="product-actions">
-                                                <button class="product-btn">Thông tin</button>
-                                                <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                                    rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
+                                               
+                                               <div class="product-actions">
+                                                <button class="product-btn">Chi tiết sản phẩm</button>
+
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1395,26 +1396,43 @@
 
         <!-- Visitor Counter Script -->
         <script>
-            (function () {
-                // Get the current view count from localStorage
-                let viewCount = localStorage.getItem('viewCount');
+            document.addEventListener('DOMContentLoaded', async function () {
+                // Function to fetch and update page views
+                async function updatePageViews() {
+                    try {
+                        // Fetch the current data from data.json
+                        const response = await fetch('data.json');
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch page view data');
+                        }
 
-                // If no view count exists, initialize it to 0
-                if (!viewCount) {
-                    viewCount = 0;
-                } else {
-                    viewCount = parseInt(viewCount, 10);
+                        const data = await response.json();
+
+                        // Increment the page view count
+                        data.pageViews = (data.pageViews || 0) + 1;
+
+                        // Update the view count display
+                        const viewCountElement = document.getElementById('view-count');
+                        if (viewCountElement) {
+                            viewCountElement.textContent = data.pageViews;
+                        }
+
+                        // Send the updated data back to the server
+                        await fetch('data.json', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                        });
+                    } catch (error) {
+                        console.error('Error updating page views:', error);
+                    }
                 }
 
-                // Increment the view count
-                viewCount++;
-
-                // Save the updated view count back to localStorage
-                localStorage.setItem('viewCount', viewCount);
-
-                // Display the view count on the page
-                document.getElementById('view-count').textContent = viewCount;
-            })();
+                // Update page views on page load
+                updatePageViews();
+            });
         </script>
 
         <!-- Product Info Modal -->
@@ -1433,7 +1451,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        
+                        <a href="https://t.me/dangha777">
+                        <button type="button" class="btn btn-primary">Liên hệ để mua hàng</button>
+                        </a>
                     </div>
                 </div>
             </div>
