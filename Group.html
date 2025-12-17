@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +52,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -66,13 +64,15 @@
             height: 100%;
             border-radius: 24px;
             padding: 3px;
-            background: linear-gradient(135deg,
-                    rgba(59, 130, 246, 0.6) 0%,
-                    rgba(16, 185, 129, 0.6) 25%,
-                    rgba(245, 158, 11, 0.6) 50%,
-                    rgba(234, 179, 8, 0.6) 75%,
-                    rgba(59, 130, 246, 0.6) 100%);
-            box-shadow:
+            background: linear-gradient(
+                135deg,
+                rgba(59, 130, 246, 0.6) 0%,
+                rgba(16, 185, 129, 0.6) 25%,
+                rgba(245, 158, 11, 0.6) 50%,
+                rgba(234, 179, 8, 0.6) 75%,
+                rgba(59, 130, 246, 0.6) 100%
+            );
+            box-shadow: 
                 0 0 60px rgba(59, 130, 246, 0.4),
                 0 0 100px rgba(16, 185, 129, 0.3),
                 0 0 140px rgba(245, 158, 11, 0.2);
@@ -83,7 +83,6 @@
             0% {
                 filter: hue-rotate(0deg);
             }
-
             100% {
                 filter: hue-rotate(360deg);
             }
@@ -174,21 +173,10 @@
 
         .sidebar-icon.active i { color: #ffffff; }
 
-        .icon-blue {
-            color: #3b82f6;
-        }
-
-        .icon-red {
-            color: #ef4444;
-        }
-
-        .icon-gray {
-            color: #9ca3af;
-        }
-
-        .icon-green {
-            color: #10b981;
-        }
+        .icon-blue { color: #3b82f6; }
+        .icon-red { color: #ef4444; }
+        .icon-gray { color: #9ca3af; }
+        .icon-green { color: #10b981; }
 
         .main-content {
             flex: 1;
@@ -281,11 +269,12 @@
         .email-card {
             width: 700px;
             height: 550px;
-            background: linear-gradient(180deg,
-                    rgba(249, 250, 251, 1) 0%,
-                    rgba(240, 253, 244, 0.95) 100%);
+            background: linear-gradient(180deg, 
+                rgba(249, 250, 251, 1) 0%, 
+                rgba(240, 253, 244, 0.95) 100%
+            );
             border-radius: 20px;
-            box-shadow:
+            box-shadow: 
                 0 25px 50px rgba(0, 0, 0, 0.3),
                 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -330,10 +319,11 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 1) 0%,
-                    rgba(240, 253, 244, 0.5) 50%,
-                    rgba(254, 252, 232, 0.5) 100%);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(240, 253, 244, 0.5) 50%,
+                rgba(254, 252, 232, 0.5) 100%
+            );
         }
 
         .gmail-logo {
@@ -448,9 +438,10 @@
             justify-content: center;
             gap: 16px;
             padding: 20px;
-            background: linear-gradient(180deg,
-                    rgba(255, 255, 255, 0.9) 0%,
-                    rgba(240, 253, 244, 0.8) 100%);
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(240, 253, 244, 0.8) 100%
+            );
         }
 
         .email-icon {
@@ -500,153 +491,14 @@
             font-size: 28px;
         }
 
-        .products-grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 40px;
-        }
 
-        .product-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 253, 244, 0.9) 100%);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 180px;
-
-            display: flex;
-
-            justify-content: center;
-            font-size: 48px;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
 
         @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
-        .product-card:nth-child(2) .product-image {
-            background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
-        }
-
-        .product-card:nth-child(3) .product-image {
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-        }
-
-        .product-card:nth-child(4) .product-image {
-            background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%);
-        }
-
-        .product-card:nth-child(5) .product-image {
-            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-        }
-
-        .product-card:nth-child(6) .product-image {
-            background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
-        }
-
-        .product-info {
-            flex: 1;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 8px;
-        }
-
-        .product-description {
-            font-size: 12px;
-            color: #6b7280;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-price {
-            font-size: 14px;
-            font-weight: 700;
-            color: #3b82f6;
-        }
-
-        .product-btn {
-            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 6px 9px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .product-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        }
-
-        /* Stock status badges */
-        .product-stock {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 10px;
-            border-radius: 999px;
-            color: #fff;
-            margin-left: -1px;
-            vertical-align: middle;
-            align-self: flex-start;
-        }
-
-        .product-stock.available {
-            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-
-        }
-
-        .product-stock.unavailable {
-            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
-
-        }
+      
 
         /* Responsive Design */
         @media (max-width: 1440px) {
@@ -689,8 +541,7 @@
             .content-area {
                 padding: 30px;
                 overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                /* Enables smooth scrolling on iOS */
+                -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
             }
         }
 
@@ -775,8 +626,7 @@
                 overflow-y: auto;
                 overflow-x: hidden;
                 min-height: 0;
-                max-height: 100vh;
-                /* Ensure the content area does not exceed viewport height */
+                max-height: 100vh; /* Ensure the content area does not exceed viewport height */
             }
 
             .products-grid {
@@ -906,8 +756,7 @@
                 overflow-y: auto;
                 overflow-x: hidden;
                 min-height: 0;
-                max-height: 100vh;
-                /* Ensure the content area does not exceed viewport height */
+                max-height: 100vh; /* Ensure the content area does not exceed viewport height */
             }
 
             .products-grid {
@@ -1027,7 +876,6 @@
         }
 
         @media (max-width: 768px) {
-
             /* Let the layout use flex sizing instead of fixed calc heights so
                the content-area can fully expand and scroll. Also avoid
                clipping the inner scrollbar by allowing the app-window to be visible. */
@@ -1036,14 +884,12 @@
             }
 
             .main-content {
-                min-height: 0;
-                /* allow flex children to limit height */
+                min-height: 0; /* allow flex children to limit height */
             }
 
             .content-area {
                 flex: 1 1 auto;
-                min-height: 0;
-                /* critical for child overflow to work inside flex */
+                min-height: 0; /* critical for child overflow to work inside flex */
                 overflow-y: auto !important;
                 -webkit-overflow-scrolling: touch;
             }
@@ -1068,69 +914,93 @@
 
         /* Modal glassmorphism */
         .modal-backdrop.show {
-            background-color: rgba(0, 0, 0, 0.55);
+            background-color: rgba(0,0,0,0.55);
         }
 
         .modal-content {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255,255,255,0.06);
             -webkit-backdrop-filter: blur(10px) saturate(120%);
             backdrop-filter: blur(10px) saturate(120%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 10px 30px rgba(2,6,23,0.6);
             color: #fff;
             border-radius: 12px;
         }
 
-        .modal-header,
-        .modal-body,
-        .modal-footer {
+        .modal-header, .modal-body, .modal-footer {
             background: transparent;
             border: none;
         }
 
-        .modal-title {
-            color: #fff;
-        }
-
-        .btn-close {
-            filter: invert(1) brightness(1.2);
-            opacity: 0.85;
-        }
+        .modal-title { color: #fff; }
+        .btn-close { filter: invert(1) brightness(1.2); opacity: 0.85; }
 
         /* Make semantic utility classes bolder and glowing for emphasis */
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 6px var(--g1), 0 0 14px var(--g2);
-            }
 
-            50% {
-                text-shadow: 0 0 12px var(--g1), 0 0 28px var(--g2);
-            }
-
-            100% {
-                text-shadow: 0 0 6px var(--g1), 0 0 14px var(--g2);
-            }
+        /* Group card styles for Group.html content-area */
+        .group-card {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            gap: 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 18px;
+            align-items: center;
+            box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+            transition: transform 220ms ease, box-shadow 220ms ease;
         }
 
-        .text-success {
-            font-weight: 700;
-            --g1: rgba(59, 255, 66, 0.9);
-            --g2: rgba(54, 237, 170, 0.22);
-            text-shadow: 0 0 8px var(--g1), 0 0 18px var(--g2);
-            animation: glow 2s ease-in-out infinite;
-            color: #22ed2f;
+        .group-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 48px rgba(2,6,23,0.85);
         }
 
-        .text-danger {
+        .group-image {
+            flex: 0 0 220px;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.22);
+        }
+
+        .group-info { flex: 1; color: #e6eef8; }
+        .group-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .group-desc { color: rgba(255,255,255,0.78); margin-bottom: 10px; line-height: 1.35; }
+
+        .join-btn {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: linear-gradient(90deg,#3b82f6 0%, #10b981 100%);
+            color: #fff;
             font-weight: 700;
-            --g1: rgba(239, 68, 68, 0.95);
-            --g2: rgba(249, 115, 22, 0.22);
-            text-shadow: 0 0 8px var(--g1), 0 0 18px var(--g2);
-            animation: glow 2s ease-in-out infinite;
+            text-decoration: none;
+            border: none;
+        }
+
+        .badge-join {
+            background: rgba(255,255,255,0.04);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .group-card { flex-direction: column; align-items: stretch; }
+            .group-image { width: 100%; height: 220px; flex: 0 0 auto; }
+            .group-info { padding-top: 8px; }
         }
     </style>
 </head>
-
 <body>
     <!-- AI Badge -->
     <div class="ai-badge">Dang Ha</div>
@@ -1147,32 +1017,32 @@
                             <span class="logo-text">mail</span>
                         </div>
                     </div>
-
-                    <!-- <div class="sidebar-icon">
+<!-- 
+                    <div class="sidebar-icon">
                         <i class="bi bi-cloud-fill icon-blue"></i>
                     </div> -->
 
-                    <div class="sidebar-icon">
+                     <div class="sidebar-icon">
                         <a href="index.html">
-                            <i class="bi bi-envelope-fill icon-red"></i>
+                        <i class="bi bi-envelope-fill icon-red"></i>
                         </a>
                     </div>
 
-                    <div class="sidebar-icon">
+                     <div class="sidebar-icon">
                         <a href="Contact.html">
                             <i class="bi bi-card-text icon-gray"></i>
                         </a>
                     </div>
-                    <!-- 
-                    <div class="sidebar-icon">
+
+                    <!-- <div class="sidebar-icon">
                         <i class="bi bi-envelope-check-fill icon-green"></i>
                     </div> -->
 
                     <div class="sidebar-icon">
-                        <a href="Group.html">
-                            <i class="bi bi-people-fill icon-gray"></i>
-                        </a>
-                    </div>
+    <a href="Group.html">
+        <i class="bi bi-people-fill icon-gray"></i>
+    </a>
+</div>
 
                 </div>
 
@@ -1201,122 +1071,28 @@
 
                     <!-- Content Area -->
                     <div class="content-area">
-                        <div class="products-grid">
-                            <!-- Product Card 1 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/product11.jpg" alt="">
+                        <div class="group-card" role="region" aria-label="Thông tin nhóm Telegram">
+                            <div class="group-image" style="background-image:url('images/z7335360700186_84151b498a74ecc0073d48d03c2450bf.jpg');" role="img" aria-label="Ảnh nhóm"></div>
+                            <div class="group-info">
+                                <div class="group-title">Nhóm Telegram: Cộng đồng Gmail</div>
+                                <div class="group-desc">Tham gia để nhận thông báo cập nhật Gmail, khuyến mãi, hỗ trợ kỹ thuật và trao đổi mua bán. Nhấn nút bên dưới để mở Telegram.</div>
+                                <div class="d-flex align-items-center mt-2">
+                                    <a class="join-btn" href="https://t.me/+R8siyv0FEZMwNWQ9" target="_blank" rel="noopener noreferrer">
+                                        <i class="bi bi-telegram" style="font-size:18px"></i>
+                                        Tham gia ngay
+                                    </a>
+                                    <span class="badge-join">30+ thành viên</span>
                                 </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail new reg tay dính phone</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">8.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
+                                <p class="mt-3 mb-0" style="color:rgba(255,255,255,0.55);font-size:13px">Lưu ý: Mở liên kết trên điện thoại sẽ chuyển sang ứng dụng Telegram nếu đã cài.</p>
                             </div>
-
-                            <!-- Product Card 2 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/product12.jpg" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail new reg tay không dính phone</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">9.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 3 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/products3.jpg" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail reg tay không dính phone ngâm trên 1 tuần</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">10.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 4 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/products4.jpg.png" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail cổ 2020-2024 kèm mã 2FA</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">11.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 5 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-tablet"></i>
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name"></div>
-                                        <span class="product-stock available"></span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price"></span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 6 -->
-                            <!-- <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-camera"></i>
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Digital Camera</div>
-                                        <div class="product-description">Professional photography equipment</div>
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">$1,199</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
 
     <!-- Watermark -->
-
+ 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1325,20 +1101,14 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <strong>
-                        <h5 class="modal-title" id="productModalLabel">Thông tin Gmail</h5>
-                    </strong>
+                    <strong><h5 class="modal-title" id="productModalLabel">Thông tin Gmail</h5></strong>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <strong>
-                        <h6 id="modalProductName" class="mb-2"></h6>
-                    </strong>
+                    <strong><h6 id="modalProductName" class="mb-2"></h6></strong>
                     <p id="modalProductDescription" class="text-muted mb-2"></p>
                     <p class="mb-1"><strong>Giá:</strong> <span id="modalProductPrice"></span></p>
-                    <p class="mb-1"><strong>Lưu ý:</strong> <span>Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu,
-                            trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành<br>❌❌LƯU Ý : ACC CHỈ BẢO HÀNH SAU
-                            KHI LOG THÀNH CÔNG</span></p>
+                    <p class="mb-1"><strong>Lưu ý:</strong> <span>Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu, trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành<br>❌❌LƯU Ý : ACC CHỈ BẢO HÀNH SAU KHI LOG THÀNH CÔNG</span></p>
                     <p class="mb-0"><strong>Trạng thái:</strong> <span id="modalProductStock"></span></p>
                 </div>
                 <div class="modal-footer">
@@ -1349,7 +1119,7 @@
     </div>
 
     <script>
-        (function () {
+        (function(){
             const search = document.getElementById('searchBar');
             if (!search) return;
 
@@ -1391,66 +1161,21 @@
     </script>
 
     <script>
-        // Product info modal handler
-        (function () {
-            const modalEl = document.getElementById('productModal');
-            if (!modalEl) return;
-            const modal = new bootstrap.Modal(modalEl);
-
-            document.addEventListener('click', function (e) {
-                const btn = e.target.closest && e.target.closest('.product-btn');
-                if (!btn) return;
-
-                const card = btn.closest('.product-card');
-                if (!card) return;
-
-                const name = card.querySelector('.product-name')?.textContent?.trim() || '';
-                const desc = card.querySelector('.product-description')?.textContent?.trim() || '';
-                const price = card.querySelector('.product-price')?.textContent?.trim() || '';
-                const stockEl = card.querySelector('.product-stock');
-                const stock = stockEl ? stockEl.textContent.trim() : 'Không rõ';
-
-                document.getElementById('modalProductName').textContent = name;
-                document.getElementById('modalProductDescription').textContent = desc;
-                document.getElementById('modalProductPrice').textContent = price;
-                const modalStock = document.getElementById('modalProductStock');
-                modalStock.textContent = stock;
-                // copy badge style to modal stock indicator
-                modalStock.className = '';
-                if (stockEl) {
-                    if (stockEl.classList.contains('available')) modalStock.classList.add('text-success');
-                    if (stockEl.classList.contains('unavailable')) modalStock.classList.add('text-danger');
-                }
-
-                modal.show();
-            });
-        })();
-    </script>
-    </script>
-
-    <script>
-        // Sidebar active icon: highlight the current / clicked link and persist across pages
+        // Sidebar active icon handler (persist active selection)
         (function(){
             const anchors = Array.from(document.querySelectorAll('.sidebar-icon a'));
             const saved = (() => { try { return localStorage.getItem('activeSidebar'); } catch(e){ return null; } })();
             const path = location.pathname || location.href;
-
             anchors.forEach(a => {
                 const parent = a.closest('.sidebar-icon');
                 if (!parent) return;
                 const href = a.getAttribute('href');
                 if (!href) return;
-
-                // mark active if href matches current location or matches saved value
                 if (saved && saved === href) parent.classList.add('active');
                 else if (path.endsWith(href) || path === href || (href === 'index.html' && (path.endsWith('/') || path.endsWith('index.html')))) parent.classList.add('active');
-
-                a.addEventListener('click', function(){
-                    try { localStorage.setItem('activeSidebar', href); } catch(e){}
-                });
+                a.addEventListener('click', function(){ try { localStorage.setItem('activeSidebar', href); } catch(e){} });
             });
         })();
     </script>
 </body>
-
 </html>
