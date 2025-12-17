@@ -1232,7 +1232,7 @@
                         <div class="content-area">
                             <div class="products-grid">
                                 <!-- Product Card 1 -->
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="1">
                                     <div class="product-image">
                                         <img src="images/product11.jpg" alt="">
                                     </div>
@@ -1255,7 +1255,7 @@
                                 </div>
 
                                 <!-- Product Card 2 -->
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="2">
                                     <div class="product-image">
                                         <img src="images/product12.jpg" alt="">
                                     </div>
@@ -1279,7 +1279,7 @@
                                 </div>
 
                                 <!-- Product Card 3 -->
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="3">
                                     <div class="product-image">
                                         <img src="images/product6.jpeg" alt="">
                                     </div>
@@ -1300,7 +1300,7 @@
                                             rel="noopener noreferrer">Liên hệ với admin để mua hàng</a>
                                     </div>
                                 </div>
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="4">
                                     <div class="product-image">
                                         <img src="images/product5.jpg" alt="">
                                     </div>
@@ -1321,7 +1321,7 @@
                                 </div>
 
                                 <!-- Product Card 4 -->
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="5">
                                     <div class="product-image">
                                         <img src="images/products4.jpg.png" alt="">
                                     </div>
@@ -1344,7 +1344,7 @@
                                 </div>
 
                                 <!-- Product Card 5 -->
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="6">
                                     <div class="product-image">
                                         <i class="bi bi-tablet"></i>
                                     </div>
@@ -1422,27 +1422,85 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <strong>
-                            <h5 class="modal-title" id="productModalLabel">Thông tin Gmail</h5>
-                        </strong>
+                        <h5 class="modal-title" id="productModalLabel">Product Name</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <strong>
-                            <h6 id="modalProductName" class="mb-2"></h6>
-                        </strong>
-                        <p id="modalProductDescription" class="text-muted mb-2"></p>
-                        <p class="mb-1"><strong>Giá:</strong> <span id="modalProductPrice"></span></p>
-                        <p class="mb-1"><strong>Lưu ý:</strong> <span>Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu,
-                                trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành<br>❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH</span></p>
-                        <p class="mb-0"><strong>Trạng thái:</strong> <span id="modalProductStock"></span></p>
+                        <p id="productModalDescription">Product description goes here.</p>
+                        <strong style="font-size: 20px;">Lưu ý:</strong> <p id="productModalNote"></p>
+                        <strong style="font-size: 20px;">Cách log:</strong> <p id="productModalHowto"></p>
+                        <p><strong id="productModalPrice" style="color: red; font-size: 25px;">$0</strong></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Buy Now</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Product data
+                const products = {
+                    1: {
+                        name: 'Gmail new reg tay dính phone',
+                        description: 'Dính phone là mail đăng ký bằng số điện thoại ảo, mail new tạo từ 1-5 ngày.',
+                        note: 'Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu, trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành ❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH',
+                        howto: 'Log thử 1 cái xog để 10p xem có bị dính xác minh không, nếu không thì mới đăng nhập tiếp.',
+                        price: '8.000đ',
+                    },
+                    2: {
+                        name: 'Gmail new reg tay không dính phone',
+                        description: 'Gmail reg tay không dùng tool và không cần số điện thoại để xác minh, mới tạo 1-5 ngày',
+                        note: 'Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu, trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành ❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH',
+                        price: '9.000đ',
+                    },
+                    3: {
+                        name: 'Gmail reg tay không dính phone ngâm trên 1 tuần',
+                        description: 'Gmail reg tay không dùng tool và không cần số điện thoại để xác minh, tạo trên 7 ngày',
+                        note: 'Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu, trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành ❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH',
+                        price: '10.000đ',
+                    },
+                    4: {
+                        name: 'GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE TRÂU BÒ',
+                        description: 'GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE TRÂU BÒ',
+                        note: 'Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu, trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành ❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH',
+                        howto: 'Log thử 1 cái xog để 10p xem có bị dính xác minh không, nếu không thì mới đăng nhập tiếp.',
+                        price: '10.000đ',
+                    },
+                    5: {
+                        name: 'Gmail cổ 2020-2024 kèm mã 2FA',
+                        description: 'Gmail cổ từ năm 2020 đến 2024, chưa sử dụng và kèm theo mã xác minh 2FA.',
+                    }
+                };
+
+                // Function to update the popup with product information
+                function updatePopup(productId) {
+                    const product = products[productId];
+                    if (product) {
+                        document.getElementById('productModalLabel').textContent = product.name;
+                        document.getElementById('productModalDescription').textContent = product.description;
+                          document.getElementById('productModalNote').textContent = product.note;
+                             document.getElementById('productModalHowto').textContent = product.howto;
+                        document.getElementById('productModalPrice').textContent = product.price;
+                    }
+                }
+
+                // Attach click event listeners to product cards
+                const productCards = document.querySelectorAll('.product-card');
+                productCards.forEach((card) => {
+                    const productId = card.getAttribute('data-product-id');
+                    if (productId) {
+                        card.addEventListener('click', () => {
+                            updatePopup(productId);
+                            const modal = new bootstrap.Modal(document.getElementById('productModal'));
+                            modal.show();
+                        });
+                    }
+                });
+            });
+        </script>
 
         <script>
             (function () {
@@ -1521,7 +1579,6 @@
                     modal.show();
                 });
             })();
-        </script>
         </script>
 
         <script>
