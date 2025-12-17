@@ -1133,370 +1133,399 @@
 </head>
 
 <body>
-    <!-- AI Badge -->
-    <div class="ai-badge">Dang Ha</div>
+        <!-- AI Badge -->
+        <div class="ai-badge">Dang Ha</div>
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <div class="glow-wrapper">
-            <div class="app-window">
-                <!-- Sidebar -->
-                <div class="sidebar">
-                    <div class="logo">
-                        <a href="index.html">
-                            <div style="display: flex; align-items: center;">
-                                <span class="logo-m">G</span>
-                                <span class="logo-text">mail</span>
-                            </div>
-                        </a>
-                    </div>
+        <!-- Visitor Counter -->
+        <div id="visitor-counter" style="position: fixed; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.5); color: white; padding: 10px; border-radius: 8px; font-size: 14px;">
+            Views: <span id="view-count">0</span>
+        </div>
 
-                    <!-- <div class="sidebar-icon">
-                        <i class="bi bi-cloud-fill icon-blue"></i>
-                    </div> -->
-
-                    <div class="sidebar-icon">
-                        <a href="index.html">
-                            <i class="bi bi-envelope-fill icon-red"></i>
-                        </a>
-                    </div>
-
-                    <div class="sidebar-icon">
-                        <a href="Contact.html">
-                            <i class="bi bi-card-text icon-gray"></i>
-                        </a>
-                    </div>
-                    <!-- 
-                    <div class="sidebar-icon">
-                        <i class="bi bi-envelope-check-fill icon-green"></i>
-                    </div> -->
-
-                    <div class="sidebar-icon">
-                        <a href="Group.html">
-                            <i class="bi bi-people-fill icon-gray"></i>
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- Main Content -->
-                <div class="main-content">
-                    <!-- Header -->
-                    <div class="header">
-                        <div class="header-left">
-                            <div class="header-icon">
-                                <i class="bi bi-list"></i>
-                            </div>
-                            <input id="searchBar" type="text" class="search-bar" placeholder="Tìm kiếm...">
-                        </div>
-                        <div class="header-right">
-                            <div class="header-icon">
-                                <i class="bi bi-house-fill"></i>
-                            </div>
-                            <div class="header-icon">
-                                <i class="bi bi-bell-fill"></i>
-                            </div>
-                            <div class="header-icon">
-                                <i class="bi bi-chevron-down"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Area -->
-                    <div class="content-area">
-                        <div class="products-grid">
-                            <!-- Product Card 1 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/product11.jpg" alt="">
+        <!-- Main Container -->
+        <div class="main-container">
+            <div class="glow-wrapper">
+                <div class="app-window">
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <div class="logo">
+                            <a href="index.html">
+                                <div style="display: flex; align-items: center;">
+                                    <span class="logo-m">G</span>
+                                    <span class="logo-text">mail</span>
                                 </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail new reg tay dính phone</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
+                            </a>
+                        </div>
+
+                        <!-- <div class="sidebar-icon">
+                            <i class="bi bi-cloud-fill icon-blue"></i>
+                        </div> -->
+
+                        <div class="sidebar-icon">
+                            <a href="index.html">
+                                <i class="bi bi-envelope-fill icon-red"></i>
+                            </a>
+                        </div>
+
+                        <div class="sidebar-icon">
+                            <a href="Contact.html">
+                                <i class="bi bi-card-text icon-gray"></i>
+                            </a>
+                        </div>
+                        <!-- 
+                        <div class="sidebar-icon">
+                            <i class="bi bi-envelope-check-fill icon-green"></i>
+                        </div> -->
+
+                        <div class="sidebar-icon">
+                            <a href="Group.html">
+                                <i class="bi bi-people-fill icon-gray"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="main-content">
+                        <!-- Header -->
+                        <div class="header">
+                            <div class="header-left">
+                                <div class="header-icon">
+                                    <i class="bi bi-list"></i>
+                                </div>
+                                <input id="searchBar" type="text" class="search-bar" placeholder="Tìm kiếm...">
+                            </div>
+                            <div class="header-right">
+                                <div class="header-icon">
+                                    <i class="bi bi-house-fill"></i>
+                                </div>
+                                <div class="header-icon">
+                                    <i class="bi bi-bell-fill"></i>
+                                </div>
+                                <div class="header-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="content-area">
+                            <div class="products-grid">
+                                <!-- Product Card 1 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="images/product11.jpg" alt="">
                                     </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">8.000đ</span>
-                                        <div class="product-actions">
-                                            <button class="product-btn">Thông tin</button>
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name">Gmail new reg tay dính phone</div>
+                                            <span class="product-stock unavailable">Hết hàng</span>
+                                            <!-- <span class="product-stock available">Còn hàng</span> -->
+                                        </div>
+                                        <div class="product-footer">
+                                            <span class="product-price">8.000đ</span>
+                                            <div class="product-actions">
+                                                <button class="product-btn">Thông tin</button>
+
+                                            </div>
+                                        </div>
+                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                            rel="noopener noreferrer">Mua ngay</a>
+                                    </div>
+                                </div>
+
+                                <!-- Product Card 2 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="images/product12.jpg" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name">Gmail new reg tay không dính phone</div>
+                                            <span class="product-stock unavailable">Hết hàng</span>
+                                            <!-- <span class="product-stock available">Còn hàng</span> -->
+                                        </div>
+                                        <div class="product-footer">
+                                            <span class="product-price">9.000đ</span>
+                                            <div class="product-actions">
+                                                <button class="product-btn">Thông tin</button>
+
+                                            </div>
 
                                         </div>
+                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                            rel="noopener noreferrer">Mua ngay</a>
                                     </div>
-                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
-                            </div>
 
-                            <!-- Product Card 2 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/product12.jpg" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail new reg tay không dính phone</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
+                                <!-- Product Card 3 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="images/product6.jpeg" alt="">
                                     </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">9.000đ</span>
-                                        <div class="product-actions">
-                                            <button class="product-btn">Thông tin</button>
-
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name">Gmail reg tay không dính phone ngâm trên 1 tuần</div>
+                                            <span class="product-stock unavailable">Hết hàng</span>
+                                            <!-- <span class="product-stock available">Còn hàng</span> -->
                                         </div>
-
-                                    </div>
-                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                        rel="noopener noreferrer">Mua ngay</a>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 3 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/product6.jpeg" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail reg tay không dính phone ngâm trên 1 tuần</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">10.000đ</span>
-                                        <div class="product-actions">
-                                            <button class="product-btn">Thông tin</button>
+                                        <div class="product-footer">
+                                            <span class="product-price">10.000đ</span>
+                                            <div class="product-actions">
+                                                <button class="product-btn">Thông tin</button>
         
+                                            </div>
                                         </div>
+                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                            rel="noopener noreferrer">Mua ngay</a>
                                     </div>
-                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
-                            </div>
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/product5.jpg" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE
-                                            TRÂU BÒ</div>
-                                        <!-- <span class="product-stock unavailable">Hết hàng</span> -->
-                                        <span class="product-stock available">Còn hàng</span>
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="images/product5.jpg" alt="">
                                     </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">10.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                        rel="noopener noreferrer">Mua ngay</a>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 4 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="images/products4.jpg.png" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Gmail cổ 2020-2024 kèm mã 2FA</div>
-                                        <span class="product-stock unavailable">Hết hàng</span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">11.000đ</span>
-                                        <div class="product-actions">
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name">GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE
+                                                TRÂU BÒ</div>
+                                            <!-- <span class="product-stock unavailable">Hết hàng</span> -->
+                                            <span class="product-stock available">Còn hàng</span>
+                                        </div>
+                                        <div class="product-footer">
+                                            <span class="product-price">10.000đ</span>
                                             <button class="product-btn">Thông tin</button>
+                                        </div>
+                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                            rel="noopener noreferrer">Mua ngay</a>
+                                    </div>
+                                </div>
 
+                                <!-- Product Card 4 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="images/products4.jpg.png" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name">Gmail cổ 2020-2024 kèm mã 2FA</div>
+                                            <span class="product-stock unavailable">Hết hàng</span>
+                                            <!-- <span class="product-stock available">Còn hàng</span> -->
+                                        </div>
+                                        <div class="product-footer">
+                                            <span class="product-price">11.000đ</span>
+                                            <div class="product-actions">
+                                                <button class="product-btn">Thông tin</button>
+
+                                            </div>
+                                        </div>
+                                        <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                            rel="noopener noreferrer">Mua ngay</a>
+                                    </div>
+                                </div>
+
+                                <!-- Product Card 5 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <i class="bi bi-tablet"></i>
+                                    </div>
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name"></div>
+                                            <span class="product-stock available"></span>
+                                            <!-- <span class="product-stock available">Còn hàng</span> -->
+                                        </div>
+                                        <div class="product-footer">
+                                            <span class="product-price"></span>
+                                            <div class="product-actions">
+                                                <button class="product-btn">Thông tin</button>
+                                                <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                                    rel="noopener noreferrer">Mua ngay</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
-                            </div>
 
-                            <!-- Product Card 5 -->
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-tablet"></i>
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name"></div>
-                                        <span class="product-stock available"></span>
-                                        <!-- <span class="product-stock available">Còn hàng</span> -->
+                                <!-- Product Card 6 -->
+                                <!-- <div class="product-card">
+                                    <div class="product-image">
+                                        <i class="bi bi-camera"></i>
                                     </div>
-                                    <div class="product-footer">
-                                        <span class="product-price"></span>
-                                        <div class="product-actions">
+                                    <div class="product-info">
+                                        <div>
+                                            <div class="product-name">Digital Camera</div>
+                                            <div class="product-description">Professional photography equipment</div>
+                                        </div>
+                                        <div class="product-footer">
+                                            <span class="product-price">$1,199</span>
                                             <button class="product-btn">Thông tin</button>
-                                            <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
-                                                rel="noopener noreferrer">Mua ngay</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-
-                            <!-- Product Card 6 -->
-                            <!-- <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-camera"></i>
-                                </div>
-                                <div class="product-info">
-                                    <div>
-                                        <div class="product-name">Digital Camera</div>
-                                        <div class="product-description">Professional photography equipment</div>
-                                    </div>
-                                    <div class="product-footer">
-                                        <span class="product-price">$1,199</span>
-                                        <button class="product-btn">Thông tin</button>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Watermark -->
+        <!-- Watermark -->
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Product Info Modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <strong>
-                        <h5 class="modal-title" id="productModalLabel">Thông tin Gmail</h5>
-                    </strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <strong>
-                        <h6 id="modalProductName" class="mb-2"></h6>
-                    </strong>
-                    <p id="modalProductDescription" class="text-muted mb-2"></p>
-                    <p class="mb-1"><strong>Giá:</strong> <span id="modalProductPrice"></span></p>
-                    <p class="mb-1"><strong>Lưu ý:</strong> <span>Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu,
-                            trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành<br>❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH</span></p>
-                    <p class="mb-0"><strong>Trạng thái:</strong> <span id="modalProductStock"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <!-- Visitor Counter Script -->
+        <script>
+            (function () {
+                // Get the current view count from localStorage
+                let viewCount = localStorage.getItem('viewCount');
+
+                // If no view count exists, initialize it to 0
+                if (!viewCount) {
+                    viewCount = 0;
+                } else {
+                    viewCount = parseInt(viewCount, 10);
+                }
+
+                // Increment the view count
+                viewCount++;
+
+                // Save the updated view count back to localStorage
+                localStorage.setItem('viewCount', viewCount);
+
+                // Display the view count on the page
+                document.getElementById('view-count').textContent = viewCount;
+            })();
+        </script>
+
+        <!-- Product Info Modal -->
+        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <strong>
+                            <h5 class="modal-title" id="productModalLabel">Thông tin Gmail</h5>
+                        </strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <strong>
+                            <h6 id="modalProductName" class="mb-2"></h6>
+                        </strong>
+                        <p id="modalProductDescription" class="text-muted mb-2"></p>
+                        <p class="mb-1"><strong>Giá:</strong> <span id="modalProductPrice"></span></p>
+                        <p class="mb-1"><strong>Lưu ý:</strong> <span>Acc sau khi log ngâm 5 tiếng rồi mới đổi mật khẩu,
+                                trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành<br>❌❌LƯU Ý : ACC CHỈ BẢO HÀNH TRƯỚC KHI LOG THÀNH CÔNG, LOG THÀNH CÔNG HẾT BẢO HÀNH</span></p>
+                        <p class="mb-0"><strong>Trạng thái:</strong> <span id="modalProductStock"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        (function () {
-            const search = document.getElementById('searchBar');
-            if (!search) return;
+        <script>
+            (function () {
+                const search = document.getElementById('searchBar');
+                if (!search) return;
 
-            const cards = Array.from(document.querySelectorAll('.product-card'));
-            const normalize = (s) => s
-                .normalize && s.normalize('NFD').replace(/[00-\u036f]/g, '')
-                ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-                : String(s).toLowerCase();
+                const cards = Array.from(document.querySelectorAll('.product-card'));
+                const normalize = (s) => s
+                    .normalize && s.normalize('NFD').replace(/[00-\u036f]/g, '')
+                    ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+                    : String(s).toLowerCase();
 
-            const debounce = (fn, delay) => {
-                let t;
-                return (...args) => {
-                    clearTimeout(t);
-                    t = setTimeout(() => fn(...args), delay);
+                const debounce = (fn, delay) => {
+                    let t;
+                    return (...args) => {
+                        clearTimeout(t);
+                        t = setTimeout(() => fn(...args), delay);
+                    };
                 };
-            };
 
-            const filterCards = () => {
-                const raw = search.value.trim();
-                const q = normalize(raw);
-                if (!q) {
-                    cards.forEach(c => c.style.display = 'flex');
-                    return;
-                }
+                const filterCards = () => {
+                    const raw = search.value.trim();
+                    const q = normalize(raw);
+                    if (!q) {
+                        cards.forEach(c => c.style.display = 'flex');
+                        return;
+                    }
 
-                const tokens = q.split(/\s+/).filter(Boolean);
-                cards.forEach(card => {
-                    const nameEl = card.querySelector('.product-name');
-                    const name = nameEl ? normalize(nameEl.textContent || '') : '';
-                    const matched = tokens.every(tok => name.indexOf(tok) !== -1);
-                    card.style.display = matched ? 'flex' : 'none';
+                    const tokens = q.split(/\s+/).filter(Boolean);
+                    cards.forEach(card => {
+                        const nameEl = card.querySelector('.product-name');
+                        const name = nameEl ? normalize(nameEl.textContent || '') : '';
+                        const matched = tokens.every(tok => name.indexOf(tok) !== -1);
+                        card.style.display = matched ? 'flex' : 'none';
+                    });
+                };
+
+                const debounced = debounce(filterCards, 150);
+                search.addEventListener('input', debounced);
+                search.addEventListener('search', filterCards);
+            })();
+        </script>
+
+        <script>
+            // Product info modal handler
+            (function () {
+                const modalEl = document.getElementById('productModal');
+                if (!modalEl) return;
+                const modal = new bootstrap.Modal(modalEl);
+
+                document.addEventListener('click', function (e) {
+                    const btn = e.target.closest && e.target.closest('.product-btn');
+                    if (!btn) return;
+
+                    const card = btn.closest('.product-card');
+                    if (!card) return;
+
+                    const name = card.querySelector('.product-name')?.textContent?.trim() || '';
+                    const desc = card.querySelector('.product-description')?.textContent?.trim() || '';
+                    const price = card.querySelector('.product-price')?.textContent?.trim() || '';
+                    const stockEl = card.querySelector('.product-stock');
+                    const stock = stockEl ? stockEl.textContent.trim() : 'Không rõ';
+
+                    document.getElementById('modalProductName').textContent = name;
+                    document.getElementById('modalProductDescription').textContent = desc;
+                    document.getElementById('modalProductPrice').textContent = price;
+                    const modalStock = document.getElementById('modalProductStock');
+                    modalStock.textContent = stock;
+                    // copy badge style to modal stock indicator
+                    modalStock.className = '';
+                    if (stockEl) {
+                        if (stockEl.classList.contains('available')) modalStock.classList.add('text-success');
+                        if (stockEl.classList.contains('unavailable')) modalStock.classList.add('text-danger');
+                    }
+
+                    modal.show();
                 });
-            };
+            })();
+        </script>
+        </script>
 
-            const debounced = debounce(filterCards, 150);
-            search.addEventListener('input', debounced);
-            search.addEventListener('search', filterCards);
-        })();
-    </script>
+        <script>
+            // Sidebar active icon: highlight the current / clicked link and persist across pages
+            (function () {
+                const anchors = Array.from(document.querySelectorAll('.sidebar-icon a'));
+                const saved = (() => { try { return localStorage.getItem('activeSidebar'); } catch (e) { return null; } })();
+                const path = location.pathname || location.href;
 
-    <script>
-        // Product info modal handler
-        (function () {
-            const modalEl = document.getElementById('productModal');
-            if (!modalEl) return;
-            const modal = new bootstrap.Modal(modalEl);
+                anchors.forEach(a => {
+                    const parent = a.closest('.sidebar-icon');
+                    if (!parent) return;
+                    const href = a.getAttribute('href');
+                    if (!href) return;
 
-            document.addEventListener('click', function (e) {
-                const btn = e.target.closest && e.target.closest('.product-btn');
-                if (!btn) return;
+                    // mark active if href matches current location or matches saved value
+                    if (saved && saved === href) parent.classList.add('active');
+                    else if (path.endsWith(href) || path === href || (href === 'index.html' && (path.endsWith('/') || path.endsWith('index.html')))) parent.classList.add('active');
 
-                const card = btn.closest('.product-card');
-                if (!card) return;
-
-                const name = card.querySelector('.product-name')?.textContent?.trim() || '';
-                const desc = card.querySelector('.product-description')?.textContent?.trim() || '';
-                const price = card.querySelector('.product-price')?.textContent?.trim() || '';
-                const stockEl = card.querySelector('.product-stock');
-                const stock = stockEl ? stockEl.textContent.trim() : 'Không rõ';
-
-                document.getElementById('modalProductName').textContent = name;
-                document.getElementById('modalProductDescription').textContent = desc;
-                document.getElementById('modalProductPrice').textContent = price;
-                const modalStock = document.getElementById('modalProductStock');
-                modalStock.textContent = stock;
-                // copy badge style to modal stock indicator
-                modalStock.className = '';
-                if (stockEl) {
-                    if (stockEl.classList.contains('available')) modalStock.classList.add('text-success');
-                    if (stockEl.classList.contains('unavailable')) modalStock.classList.add('text-danger');
-                }
-
-                modal.show();
-            });
-        })();
-    </script>
-    </script>
-
-    <script>
-        // Sidebar active icon: highlight the current / clicked link and persist across pages
-        (function () {
-            const anchors = Array.from(document.querySelectorAll('.sidebar-icon a'));
-            const saved = (() => { try { return localStorage.getItem('activeSidebar'); } catch (e) { return null; } })();
-            const path = location.pathname || location.href;
-
-            anchors.forEach(a => {
-                const parent = a.closest('.sidebar-icon');
-                if (!parent) return;
-                const href = a.getAttribute('href');
-                if (!href) return;
-
-                // mark active if href matches current location or matches saved value
-                if (saved && saved === href) parent.classList.add('active');
-                else if (path.endsWith(href) || path === href || (href === 'index.html' && (path.endsWith('/') || path.endsWith('index.html')))) parent.classList.add('active');
-
-                a.addEventListener('click', function () {
-                    try { localStorage.setItem('activeSidebar', href); } catch (e) { }
+                    a.addEventListener('click', function () {
+                        try { localStorage.setItem('activeSidebar', href); } catch (e) { }
+                    });
                 });
-            });
-        })();
-    </script>
-</body>
+            })();
+        </script>
+    </body>
 
 </html>
