@@ -13,9 +13,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-   a{
+
+        a {
             text-decoration: none;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
@@ -171,10 +173,12 @@
         /* Active state for sidebar icons (applies after click/navigation) */
         .sidebar-icon.active {
             transform: scale(1.12);
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
         }
 
-        .sidebar-icon.active i { color: #ffffff; }
+        .sidebar-icon.active i {
+            color: #ffffff;
+        }
 
         .icon-blue {
             color: #3b82f6;
@@ -625,6 +629,32 @@
         .product-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .buy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 12px;
+            transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.18);
+            opacity: 0.98
         }
 
         /* Stock status badges */
@@ -1145,10 +1175,10 @@
                 <div class="sidebar">
                     <div class="logo">
                         <a href="index.html">
-                        <div style="display: flex; align-items: center;">
-                            <span class="logo-m">G</span>
-                            <span class="logo-text">mail</span>
-                        </div>
+                            <div style="display: flex; align-items: center;">
+                                <span class="logo-m">G</span>
+                                <span class="logo-text">mail</span>
+                            </div>
                         </a>
                     </div>
 
@@ -1219,8 +1249,13 @@
                                     </div>
                                     <div class="product-footer">
                                         <span class="product-price">8.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
+                                        <div class="product-actions">
+                                            <button class="product-btn">Thông tin</button>
+
+                                        </div>
                                     </div>
+                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
                             </div>
 
@@ -1237,8 +1272,14 @@
                                     </div>
                                     <div class="product-footer">
                                         <span class="product-price">9.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
+                                        <div class="product-actions">
+                                            <button class="product-btn">Thông tin</button>
+
+                                        </div>
+
                                     </div>
+                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
                             </div>
 
@@ -1255,17 +1296,23 @@
                                     </div>
                                     <div class="product-footer">
                                         <span class="product-price">10.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
+                                        <div class="product-actions">
+                                            <button class="product-btn">Thông tin</button>
+        
+                                        </div>
                                     </div>
+                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
                             </div>
-                             <div class="product-card">
+                            <div class="product-card">
                                 <div class="product-image">
                                     <img src="images/product5.jpg" alt="">
                                 </div>
                                 <div class="product-info">
                                     <div>
-                                        <div class="product-name">GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE TRÂU BÒ</div>
+                                        <div class="product-name">GMAIL HÀNG NEW CHƯA QUA DỊCH VỤ-REG TAY-IP VIỆT- LIVE
+                                            TRÂU BÒ</div>
                                         <!-- <span class="product-stock unavailable">Hết hàng</span> -->
                                         <span class="product-stock available">Còn hàng</span>
                                     </div>
@@ -1273,6 +1320,8 @@
                                         <span class="product-price">10.000đ</span>
                                         <button class="product-btn">Thông tin</button>
                                     </div>
+                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
                             </div>
 
@@ -1289,8 +1338,13 @@
                                     </div>
                                     <div class="product-footer">
                                         <span class="product-price">11.000đ</span>
-                                        <button class="product-btn">Thông tin</button>
+                                        <div class="product-actions">
+                                            <button class="product-btn">Thông tin</button>
+
+                                        </div>
                                     </div>
+                                    <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                        rel="noopener noreferrer">Mua ngay</a>
                                 </div>
                             </div>
 
@@ -1307,7 +1361,11 @@
                                     </div>
                                     <div class="product-footer">
                                         <span class="product-price"></span>
-                                        <button class="product-btn">Thông tin</button>
+                                        <div class="product-actions">
+                                            <button class="product-btn">Thông tin</button>
+                                            <a class="buy-btn" href="https://t.me/dangha777" target="_blank"
+                                                rel="noopener noreferrer">Mua ngay</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1450,9 +1508,9 @@
 
     <script>
         // Sidebar active icon: highlight the current / clicked link and persist across pages
-        (function(){
+        (function () {
             const anchors = Array.from(document.querySelectorAll('.sidebar-icon a'));
-            const saved = (() => { try { return localStorage.getItem('activeSidebar'); } catch(e){ return null; } })();
+            const saved = (() => { try { return localStorage.getItem('activeSidebar'); } catch (e) { return null; } })();
             const path = location.pathname || location.href;
 
             anchors.forEach(a => {
@@ -1465,8 +1523,8 @@
                 if (saved && saved === href) parent.classList.add('active');
                 else if (path.endsWith(href) || path === href || (href === 'index.html' && (path.endsWith('/') || path.endsWith('index.html')))) parent.classList.add('active');
 
-                a.addEventListener('click', function(){
-                    try { localStorage.setItem('activeSidebar', href); } catch(e){}
+                a.addEventListener('click', function () {
+                    try { localStorage.setItem('activeSidebar', href); } catch (e) { }
                 });
             });
         })();
