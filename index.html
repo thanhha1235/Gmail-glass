@@ -1,1492 +1,194 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mgall - Email Interface</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mgall - Thông tin</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* Bảng màu hiện đại */
+            --primary-color: #4f46e5;
+            --bg-gradient: linear-gradient(135deg, #1739d3 0%, #9fe431 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
             padding: 20px;
-            overflow: hidden;
+            box-sizing: border-box;
         }
 
-        .ai-badge {
-            position: fixed;
-            top: -0px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 8px 16px;
-            color: #fff;
-            font-weight: 600;
-            font-size: 14px;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
-
-        .main-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 700px;
-            position: relative;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .glow-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            padding: 3px;
-            background: linear-gradient(135deg,
-                    rgba(59, 130, 246, 0.6) 0%,
-                    rgba(16, 185, 129, 0.6) 25%,
-                    rgba(245, 158, 11, 0.6) 50%,
-                    rgba(234, 179, 8, 0.6) 75%,
-                    rgba(59, 130, 246, 0.6) 100%);
-            box-shadow:
-                0 0 60px rgba(59, 130, 246, 0.4),
-                0 0 100px rgba(16, 185, 129, 0.3),
-                0 0 140px rgba(245, 158, 11, 0.2);
-            animation: glowRotate 8s linear infinite;
-        }
-
-        @keyframes glowRotate {
-            0% {
-                filter: hue-rotate(0deg);
-            }
-
-            100% {
-                filter: hue-rotate(360deg);
-            }
-        }
-
-        .app-window {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-            border-radius: 22px;
+        header {
             display: flex;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .sidebar {
-            width: 80px;
-            background: rgba(26, 32, 44, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
-            gap: 24px;
-        }
-
-        .logo {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: 20px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6 0%, #ef4444 50%, #f59e0b 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-m {
-            font-size: 24px;
-            font-weight: 700;
-            color: #3b82f6;
-        }
-
-        .sidebar-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        /* Make anchors inside sidebar icons fill the icon area so clicks register */
-        .sidebar-icon a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .sidebar-icon i {
-            font-size: 24px;
-        }
-
-        .sidebar-icon:hover {
-            transform: scale(1.1);
             background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Active state for sidebar icons (applies after click/navigation) */
-        .sidebar-icon.active {
-            transform: scale(1.12);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .sidebar-icon.active i {
-            color: #ffffff;
-        }
-
-        .icon-blue {
-            color: #3b82f6;
-        }
-
-        .icon-red {
-            color: #ef4444;
-        }
-
-        .icon-gray {
-            color: #9ca3af;
-        }
-
-        .icon-green {
-            color: #10b981;
-        }
-
-        /* Sidebar text link styles (for the three simple nav items) */
-        .sidebar > div {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sidebar a {
-            color: rgba(255, 255, 255, 0.9);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 10px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 140px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 13px;
-            text-decoration: none;
-            transition: background 180ms ease, transform 120ms ease, color 180ms ease;
-            color: rgba(255,255,255,0.85);
-        }
-
-        .sidebar a span {
-            display: inline-block;
-            color: inherit;
-        }
-
-        .sidebar a:hover,
-        .sidebar a:focus {
-            background: rgba(255, 255, 255, 0.06);
-            color: #ffffff;
-            transform: translateY(-3px);
-            text-decoration: none;
-            outline: none;
-        }
-
-        /* Active state for sidebar text links */
-        .sidebar a.active {
-            background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(16,185,129,0.12));
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(16,24,40,0.6);
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        /* Provide a visible outline for keyboard focus on small screens */
-        .sidebar a:focus-visible {
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
-        }
-
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(180deg, rgba(45, 55, 72, 0.9) 0%, rgba(26, 32, 44, 0.9) 100%);
-        }
-
-        .header {
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header-logo-icon {
-            width: 32px;
-            height: 24px;
-            background: linear-gradient(135deg, #3b82f6 0%, #ef4444 50%, #f59e0b 100%);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
-        }
-
-        .header-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* Header link styles */
-        .header a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 8px;
-            transition: background 200ms ease, color 200ms ease, transform 120ms ease;
-        }
-
-        .header a:hover,
-        .header a:focus {
-            background: rgba(255, 255, 255, 0.06);
-            color: #ffffff;
-            transform: translateY(-2px);
-            text-decoration: none;
-            outline: none;
-        }
-
-        .header a .bi {
-            font-size: 18px;
-            color: inherit;
-        }
-
-        /* Notifications badge and modal styles */
-        .notif-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            min-width: 20px;
-            height: 20px;
-            padding: 0 6px;
-            background: linear-gradient(90deg,#ef4444,#f59e0b);
-            color: #fff;
-            font-size: 12px;
-            border-radius: 999px;
-            box-shadow: 0 4px 10px rgba(2,6,23,0.45);
-        }
-
-        .notifications-modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(2,6,23,0.45);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1200;
-            padding: 24px;
-        }
-
-        .notifications-modal {
-            width: 420px;
-            max-width: calc(100% - 48px);
-            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            box-shadow: 0 12px 40px rgba(2,6,23,0.7);
-            color: #e6eef8;
-            overflow: hidden;
-        }
-
-        .notifications-header {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:12px 16px;
-            border-bottom:1px solid rgba(255,255,255,0.03);
-        }
-
-        .notifications-list {
-            max-height: 320px;
-            overflow-y: auto;
-            padding:8px 0;
-        }
-
-        .notification-item {
-            display:flex;
-            gap:12px;
-            padding:12px 16px;
-            align-items:flex-start;
-            border-bottom:1px dashed rgba(255,255,255,0.02);
-            transition: background 140ms ease, transform 120ms ease;
-        }
-
-        .notification-item.unread {
-            background: linear-gradient(90deg, rgba(59,130,246,0.04), transparent);
-        }
-
-        .notification-item .dot {
-            width:10px;height:10px;border-radius:50%;background:#3b82f6;margin-top:6px;flex:0 0 auto;
-        }
-
-        .notification-item .content {
-            flex:1;
-            font-size:14px;color:rgba(230,238,248,0.95);
-        }
-
-        .notifications-footer {
-            display:flex;gap:8px;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid rgba(255,255,255,0.02);
-        }
-
-        .btn-ghost {
-            background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e6eef8;padding:8px 10px;border-radius:8px;cursor:pointer;
-        }
-
-        .notifications-modal-backdrop.show { display:flex; }
-
-        .header-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .header-icon:hover {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .search-bar {
-            width: 300px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0 12px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-
-        .search-bar::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .content-area {
-            flex: 1;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 40px;
-            position: relative;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        .email-card {
-            width: 700px;
-            height: 550px;
-            background: linear-gradient(180deg,
-                    rgba(249, 250, 251, 1) 0%,
-                    rgba(240, 253, 244, 0.95) 100%);
-            border-radius: 20px;
-            box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.3),
-                0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .email-header {
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .email-title {
-            font-size: 13px;
-            color: #9ca3af;
-            font-weight: 500;
-        }
-
-        .close-btn {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9ca3af;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            color: #ef4444;
-        }
-
-        .email-body {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 1) 0%,
-                    rgba(240, 253, 244, 0.5) 50%,
-                    rgba(254, 252, 232, 0.5) 100%);
-        }
-
-        .gmail-logo {
-            width: 400px;
-            height: 300px;
-            position: relative;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
-        }
-
-        .gmail-m {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-        }
-
-        .m-shape {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Gmail M shape using borders and transforms */
-        .m-red-top {
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translateX(-50%) rotate(-25deg);
-            width: 200px;
-            height: 80px;
-            background: linear-gradient(135deg, #ea4335 0%, #ff0000 100%);
-            border-radius: 40px 40px 0 0;
-            transform-origin: bottom center;
-        }
-
-        .m-red-right {
-            position: absolute;
-            top: 15%;
-            right: 10%;
-            width: 80px;
-            height: 200px;
-            background: linear-gradient(180deg, #ea4335 0%, #ff5722 100%);
-            border-radius: 0 40px 40px 0;
-        }
-
-        .m-blue-left {
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            width: 80px;
-            height: 220px;
-            background: linear-gradient(180deg, #4285f4 0%, #2196f3 100%);
-            border-radius: 40px 0 0 40px;
-        }
-
-        .m-yellow-right {
-            position: absolute;
-            bottom: 15%;
-            right: 10%;
-            width: 80px;
-            height: 180px;
-            background: linear-gradient(180deg, #fbbc04 0%, #ffa000 100%);
-            border-radius: 0 0 40px 40px;
-        }
-
-        .m-white-center {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 250px;
-            height: 180px;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-
-        .gmail-icon-small {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 24px;
-            background: linear-gradient(135deg, #3b82f6 0%, #ef4444 50%, #f59e0b 100%);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
-        }
-
-        .emoji-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9ca3af;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .emoji-icon:hover {
-            color: #3b82f6;
-            transform: scale(1.1);
-        }
-
-        .email-footer {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            padding: 20px;
-            background: linear-gradient(180deg,
-                    rgba(255, 255, 255, 0.9) 0%,
-                    rgba(240, 253, 244, 0.8) 100%);
-        }
-
-        .email-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .email-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .email-icon i {
-            font-size: 20px;
-        }
-
-        .email-icon.active {
-            background: linear-gradient(135deg, #3b82f6 0%, #ef4444 50%, #f59e0b 100%);
-        }
-
-        .email-icon.active i {
+            padding: 15px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
         }
 
-        .watermark {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.6);
+        .brand {
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        nav a {
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
             font-size: 24px;
-            font-weight: 300;
+            margin-bottom: 24px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        p {
+            margin: 16px 0;
+            line-height: 1.6;
+            color: #4b5563;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        /* Thêm icon giả cho các dòng nội dung */
+        p::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
             font-style: italic;
         }
 
-        .watermark i {
-            font-size: 28px;
-        }
-
-
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-
-
-        /* Responsive Design */
-        @media (max-width: 1440px) {
-            .main-container {
-                max-width: 1000px;
-                height: 650px;
-            }
-
-            .email-card {
-                width: 650px;
-                height: 480px;
-            }
-
-            .gmail-logo {
-                width: 350px;
-                height: 240px;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .main-container {
-                max-width: 900px;
-                height: 600px;
-            }
-
-            .email-card {
-                width: 600px;
-                height: 450px;
-            }
-
-            .gmail-logo {
-                width: 300px;
-                height: 220px;
-            }
-
-            .search-bar {
-                width: 250px;
-            }
-
-            .content-area {
-                padding: 30px;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                /* Enables smooth scrolling on iOS */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-container {
-                max-width: 100%;
-                height: auto;
-                min-height: 100vh;
-            }
-
-            .glow-wrapper {
-                border-radius: 16px;
-            }
-
-            .app-window {
-                flex-direction: column;
-                border-radius: 16px;
-            }
-
-            .sidebar {
-                width: 100%;
-                flex-direction: row;
-                padding: 12px 16px;
-                gap: 12px;
-                height: 70px;
-                justify-content: flex-start;
-                overflow-x: auto;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .logo {
-                margin-bottom: 0;
-                margin-right: 10px;
-            }
-
-            .sidebar-icon {
-                width: 40px;
-                height: 40px;
-                flex-shrink: 0;
-            }
-
-            .sidebar-icon i {
-                font-size: 18px;
-            }
-
-            .header {
-                height: 50px;
-                flex-direction: column;
-                gap: 8px;
-                padding: 8px 12px;
-            }
-
-            .header-left {
-                gap: 8px;
-                width: 100%;
-            }
-
-            .header-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-
-            .search-bar {
-                width: calc(100% - 50px);
-                height: 32px;
-                font-size: 12px;
-            }
-
-            .header-right {
-                gap: 8px;
-                width: 100%;
-            }
-
-            .content-area {
-                flex: 1;
-                padding: 15px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                overflow-y: auto;
-                overflow-x: hidden;
-                min-height: 0;
-                max-height: 100vh;
-                /* Ensure the content area does not exceed viewport height */
-            }
-
-            .products-grid {
-                width: 100%;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-                padding: 15px;
-            }
-
-            .email-header {
-                height: 45px;
-                padding: 0 15px;
-            }
-
-            .email-title {
-                font-size: 12px;
-            }
-
-            .close-btn {
-                width: 20px;
-                height: 20px;
-            }
-
-            .email-footer {
-                height: 60px;
-                gap: 12px;
-                padding: 15px;
-            }
-
-            .email-icon {
-                width: 40px;
-                height: 40px;
-            }
-
-            .email-icon i {
-                font-size: 16px;
-            }
-
-            .gmail-logo {
-                width: 220px;
-                height: 160px;
-            }
-
-            .ai-badge {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-
-            .watermark {
-                font-size: 20px;
-                bottom: 10px;
-                right: 10px;
-            }
-
-            .watermark i {
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .main-container {
-                height: auto;
-                min-height: 100vh;
-            }
-
-            .sidebar {
-                padding: 8px 12px;
-                gap: 8px;
-                height: 60px;
-            }
-
-            .logo {
-                font-size: 16px;
-            }
-
-            .logo-text {
-                font-size: 14px;
-            }
-
-            .sidebar-icon {
-                width: 36px;
-                height: 36px;
-            }
-
-            .header {
-                height: auto;
-                padding: 8px;
-                gap: 6px;
-            }
-
-            .header-left {
-                gap: 6px;
-                width: 100%;
-            }
-
-            .header-icon {
-                width: 24px;
-                height: 24px;
-            }
-
-            .search-bar {
-                width: 100%;
-                height: 28px;
-                font-size: 11px;
-            }
-
-            .header-right {
-                gap: 6px;
-            }
-
-            .header-title {
-                font-size: 16px;
-            }
-
-            .content-area {
-                flex: 1;
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                overflow-y: auto;
-                overflow-x: hidden;
-                min-height: 0;
-                max-height: 100vh;
-                /* Ensure the content area does not exceed viewport height */
-            }
-
-            .products-grid {
-                width: 100%;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 12px;
-                padding: 10px;
-            }
-
-            .product-card {
-                min-height: 240px;
-            }
-
-            .email-card {
-                width: 100%;
-                min-height: 350px;
-                margin-top: 5px;
-                border-radius: 16px;
-            }
-
-            .email-header {
-                height: 40px;
-                padding: 0 12px;
-            }
-
-            .email-title {
-                font-size: 11px;
-            }
-
-            .email-body {
-                min-height: 220px;
-            }
-
-            .gmail-logo {
-                width: 180px;
-                height: 130px;
-            }
-
-            .email-footer {
-                height: 50px;
-                gap: 8px;
-                padding: 12px;
-                justify-content: space-between;
-            }
-
-            .email-icon {
-                width: 36px;
-                height: 36px;
-            }
-
-            .ai-badge {
-                font-size: 11px;
-                padding: 5px 10px;
-                top: -0px;
-                left: 10px;
-            }
-
-            .glow-wrapper {
-                border-radius: 12px;
-                padding: 2px;
-            }
-
-            .watermark {
-                font-size: 16px;
-                bottom: 8px;
-                right: 8px;
-            }
-
-            .watermark i {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .main-container {
-                padding: 0;
-            }
-
-            .sidebar {
-                height: 55px;
-                padding: 6px 8px;
-            }
-
-            .sidebar-icon {
-                width: 32px;
-                height: 32px;
-            }
-
-            .sidebar-icon i {
-                font-size: 16px;
-            }
-
-            .email-card {
-                min-height: 300px;
-                border-radius: 12px;
-            }
-
-            .email-footer {
-                height: 45px;
-            }
-
-            .email-icon {
-                width: 32px;
-                height: 32px;
-            }
-
-            .gmail-logo {
-                width: 150px;
-                height: 110px;
-            }
-
-            .header-logo-icon {
-                width: 24px;
-                height: 18px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* Let the layout use flex sizing instead of fixed calc heights so
-               the content-area can fully expand and scroll. Also avoid
-               clipping the inner scrollbar by allowing the app-window to be visible. */
-            .app-window {
-                overflow: visible;
-            }
-
-            .main-content {
-                min-height: 0;
-                /* allow flex children to limit height */
-            }
-
-            .content-area {
-                flex: 1 1 auto;
-                min-height: 0;
-                /* critical for child overflow to work inside flex */
-                overflow-y: auto !important;
-                -webkit-overflow-scrolling: touch;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .app-window {
-                overflow: visible;
-            }
-
-            .main-content {
-                min-height: 0;
-            }
-
-            .content-area {
-                flex: 1 1 auto;
-                min-height: 0;
-                overflow-y: auto !important;
-                -webkit-overflow-scrolling: touch;
-            }
-        }
-
-        /* Modal glassmorphism */
-        .modal-backdrop.show {
-            background-color: rgba(0, 0, 0, 0.55);
-        }
-
-        .modal-content {
-            background: rgba(255, 255, 255, 0.06);
-            -webkit-backdrop-filter: blur(10px) saturate(120%);
-            backdrop-filter: blur(10px) saturate(120%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-            color: #fff;
-            border-radius: 12px;
-        }
-
-        .modal-header,
-        .modal-body,
-        .modal-footer {
-            background: transparent;
-            border: none;
-        }
-
-        .modal-title {
-            color: #fff;
-        }
-
-        .btn-close {
-            filter: invert(1) brightness(1.2);
-            opacity: 0.85;
-        }
-
-        /* Make semantic utility classes bolder and glowing for emphasis */
-
-        /* Contact card styles for Contact.html content-area */
-        .contact-card {
-            width: 100%;
-            max-width: 980px;
-            display: flex;
-            gap: 18px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 14px;
-            padding: 16px;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-            transition: transform 200ms ease, box-shadow 200ms ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 48px rgba(2, 6, 23, 0.85);
-        }
-
-        .contact-avatar {
-            flex: 0 0 160px;
-            height: 160px;
-            border-radius: 12px;
-            background-size: cover;
-            background-position: center;
-            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.22);
-        }
-
-        .contact-info {
-            flex: 1;
-            color: #e6eef8;
-        }
-
-        .contact-name {
-            font-size: 20px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-
-        .contact-role {
-            color: rgba(255, 255, 255, 0.78);
-            margin-bottom: 10px;
-        }
-
-        .contact-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-top: 6px;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            gap: 8px;
-            align-items: center;
-            padding: 8px 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .btn-telegram {
-            background: linear-gradient(90deg, #3b82f6, #06a9ff);
-        }
-
-        .btn-email {
-            background: linear-gradient(90deg, #10b981, #34d399);
-        }
-
-        .contact-note {
-            color: rgba(255, 255, 255, 0.54);
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 13px;
-            margin-top: 10px;
         }
 
-        @media (max-width:768px) {
-            .contact-card {
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            header {
                 flex-direction: column;
-                align-items: stretch;
+                gap: 10px;
+                text-align: center;
             }
-
-            .contact-avatar {
-                width: 100%;
-                height: 220px;
-                flex: 0 0 auto;
-                border-radius: 10px;
-            }
-
-            .contact-info {
-                padding-top: 8px;
-            }
-        }
-
-        a {
-            text-decoration: none;
+            nav a { margin: 0 8px; }
+            .card { padding: 25px; }
         }
     </style>
 </head>
 
 <body>
-    <!-- AI Badge -->
-    <div class="ai-badge">Dang Ha</div>
+    <div class="container">
+        <header>
+            <div class="brand">GMAIL</div>
+            <nav>
+                <a href="index.html">Trang chủ</a>
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <div class="glow-wrapper">
-            <div class="app-window">
-                <!-- Sidebar -->
-                <div class="sidebar">
-                    <div class="logo">
-                        <a href="index.html">
-                            <div style="display: flex; align-items: center;">
-                                <span class="logo-m">G</span>
-                                <span class="logo-text">mail</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- 
-                    <div class="sidebar-icon">
-                        <i class="bi bi-cloud-fill icon-blue"></i>
-                    </div> -->
+                <a href="Group.html">Group</a>
+            </nav>
+        </header>
 
-                    <div class="   ">
-                        <a href="index.html">
-                           <span>Trang chủ</span>
-                        </a>
-                    </div>
+        <main>
+            <section class="card">
+                <h1>Thông tin & Cách sử dụng</h1>
+                <p>Bảo hành <strong>24 giờ</strong> từ lúc mua (Lỗi pass, veri, disable). Đăng nhập thành công sẽ hết bảo hành.</p>
+                <p>Khi mua số lượng lớn, hãy đăng nhập <strong>rải rác</strong> để tránh bị quét hệ thống.</p>
+                <p>Ngâm tài khoản ít nhất <strong>2 tiếng</strong> trước khi đổi mật khẩu để đảm bảo độ tin cậy.</p>
+                <p>Khuyến khích dùng <strong>4G</strong> và reset IP (bật/tắt chế độ máy bay) mỗi lần đăng nhập.</p>
+                <div class="meta">Cập nhật: Giao diện hiện đại v2.0</div>
+            </section>
+        </main>
 
-                    <div class="">
-                        <a href="Contact.html">
-                            <span>Liên hệ</span>
-                        </a>
-                    </div>
+        <footer>© ĐẶNG THANH HÀ</footer>
+    </div>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const SHEET_ID = "1E2XKNgjLvKc3eqdZv9WAXfgoprHpOWMnb-ixu5CrNq8";
+    const SHEET_NAME = "Mail bán ra";
+    const API_URL = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(SHEET_NAME)}`;
 
-                  
+    fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+            if (!data || data.length === 0) return;
 
-                    <div class="">
-                        <a href="Group.html">
-                           <span>Group chung</span>
-                        </a>
-                    </div>
+            const acc = data[0]["Acc còn"];
+            const soLuong = data[0]["Số lượng"];
 
-                </div>
+            const card = document.querySelector(".card");
 
-                <!-- Main Content -->
-                <div class="main-content">
-                    <!-- Header -->
-                    <div class="header">
-                     
-                        <div class="header-right">
-                            <div class="header-icon">
-                                <i class="bi bi-house-fill"></i>
-                            </div>
-                            <div id="notificationsBtn" class="header-icon" role="button" aria-haspopup="dialog" aria-expanded="false" tabindex="0">
-                                <i class="bi bi-bell-fill" aria-hidden="true"></i>
-                                <span id="notifBadge" class="notif-badge" aria-hidden="true">3</span>
-                                <span class="visually-hidden">Mở thông báo</span>
-                            </div>
-                        </div>
-                    </div>
+            const infoBlock = document.createElement("div");
+            infoBlock.innerHTML = `
+                <h1>Thông tin tài khoản</h1>
+                <p><strong>Loại:</strong> Gmail new ko dính phone</p>
+                <p><strong>Số lượng còn:</strong> ${acc}</p>
+                <div class="meta"></div>
+            `;
 
-                    <!-- Content Area -->
-                    <div class="content-area">
-                        <div class="contact-card" role="region" aria-label="Liên hệ Dang Ha">
-                           
-                            <div class="contact-info">
-                                <div class="contact-name">Thông tin và cách sử dụng</div>
-                                <div class="contact-role">Mail sẽ được bảo hành 24h từ lúc mua, chỉ bảo hành với những trường hợp pass lỗi, mail bị veri, disable, log thành công hết bảo hành</div>
-                                 <div class="contact-role">Khi mua mail với số lượng nhiều thì nên log từ từ, tránh log 1 lúc nhiều acc dễ die acc</div>
-                                 <div class="contact-role">Acc sau khi log ngâm 2 tiếng rồi mới đổi mật khẩu, trường hợp đổi mật khẩu bị dính xác minh sẽ ko bảo hành</div>
-                                  <div class="contact-role">Nên dùng 4g và bật tắt chế độ máy bay đổi ip thiết bị khi log để mail được khỏe hơn</div>
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Watermark -->
+            // 👇 chèn LÊN TRÊN cùng
+            card.prepend(infoBlock);
+        })
+        .catch(console.error);
+});
+</script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Product Info Modal -->
-
-
-        <script>
-            (function () {
-                const search = document.getElementById('searchBar');
-                if (!search) return;
-
-                const cards = Array.from(document.querySelectorAll('.product-card'));
-                const normalize = (s) => s
-                    .normalize && s.normalize('NFD').replace(/[00-\u036f]/g, '')
-                    ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-                    : String(s).toLowerCase();
-
-                const debounce = (fn, delay) => {
-                    let t;
-                    return (...args) => {
-                        clearTimeout(t);
-                        t = setTimeout(() => fn(...args), delay);
-                    };
-                };
-
-                const filterCards = () => {
-                    const raw = search.value.trim();
-                    const q = normalize(raw);
-                    if (!q) {
-                        cards.forEach(c => c.style.display = 'flex');
-                        return;
-                    }
-
-                    const tokens = q.split(/\s+/).filter(Boolean);
-                    cards.forEach(card => {
-                        const nameEl = card.querySelector('.product-name');
-                        const name = nameEl ? normalize(nameEl.textContent || '') : '';
-                        const matched = tokens.every(tok => name.indexOf(tok) !== -1);
-                        card.style.display = matched ? 'flex' : 'none';
-                    });
-                };
-
-                const debounced = debounce(filterCards, 150);
-                search.addEventListener('input', debounced);
-                search.addEventListener('search', filterCards);
-            })();
-        </script>
-        </script>
-
-        <!-- Notifications UI -->
-        <div id="notificationsBackdrop" class="notifications-modal-backdrop" aria-hidden="true">
-            <aside class="notifications-modal" role="dialog" aria-modal="true" aria-labelledby="notificationsTitle">
-                <div class="notifications-header">
-                    <div>
-                        <strong id="notificationsTitle">Thông báo</strong>
-                        <div id="unreadCount" style="font-size:12px;color:rgba(230,238,248,0.7);">3 mới</div>
-                    </div>
-                    <div style="display:flex;gap:8px;align-items:center;">
-                        <button id="markAllRead" class="btn-ghost">Đánh dấu đã đọc</button>
-                        <button id="closeNotif" class="btn-ghost">Đóng</button>
-                    </div>
-                </div>
-                <div id="notificationsList" class="notifications-list" tabindex="0">
-                    <!-- items rendered by JS -->
-                </div>
-                <div class="notifications-footer">
-                    <small style="color:rgba(230,238,248,0.6);">Hiển thị 10 thông báo gần nhất</small>
-                    <a href="Contact.html" class="btn-ghost">Xem tất cả</a>
-                </div>
-            </aside>
-        </div>
-
-        <script>
-            (function(){
-                const sample = [
-                    {id:1,text:'Có đơn mới cần xử lý',time:'1 giờ trước',read:false},
-                    {id:2,text:'Tài khoản vừa được đăng nhập từ thiết bị mới',time:'3 giờ trước',read:false},
-                    {id:3,text:'Báo cáo hàng tuần đã sẵn sàng',time:'1 ngày trước',read:true},
-                ];
-
-                const STORAGE_KEY = 'mg_notifications_v1';
-                const btn = document.getElementById('notificationsBtn');
-                const backdrop = document.getElementById('notificationsBackdrop');
-                const listEl = document.getElementById('notificationsList');
-                const badge = document.getElementById('notifBadge');
-                const unreadCountEl = document.getElementById('unreadCount');
-                const closeBtn = document.getElementById('closeNotif');
-                const markAllBtn = document.getElementById('markAllRead');
-
-                function load() {
-                    try{ const raw = localStorage.getItem(STORAGE_KEY); return raw? JSON.parse(raw): sample; }catch(e){return sample}
-                }
-
-                function save(data){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
-                }
-
-                let data = load();
-
-                function render(){
-                    listEl.innerHTML = '';
-                    data.slice(0,10).forEach(n=>{
-                        const item = document.createElement('div');
-                        item.className = 'notification-item' + (n.read? '':' unread');
-                        item.innerHTML = `<div class="dot" aria-hidden="true"></div><div class="content"><div style="font-weight:700">${n.text}</div><div style="font-size:12px;color:rgba(230,238,248,0.6);margin-top:6px">${n.time}</div></div>`;
-                        item.tabIndex = 0;
-                        item.addEventListener('click', ()=>{ n.read = true; save(data); updateBadge(); render(); });
-                        item.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); n.read=true; save(data); updateBadge(); render(); } });
-                        listEl.appendChild(item);
-                    });
-                    updateBadge();
-                }
-
-                function updateBadge(){
-                    const unread = data.filter(x=>!x.read).length;
-                    badge.style.display = unread? 'inline-flex':'none';
-                    badge.textContent = unread;
-                    unreadCountEl.textContent = unread? (unread + ' mới') : 'Không có thông báo mới';
-                }
-
-                function open(){ backdrop.classList.add('show'); backdrop.setAttribute('aria-hidden','false'); btn.setAttribute('aria-expanded','true'); listEl.focus(); }
-                function close(){ backdrop.classList.remove('show'); backdrop.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); btn.focus(); }
-
-                btn.addEventListener('click', ()=>{ if(backdrop.classList.contains('show')) close(); else open(); });
-                btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); btn.click(); } });
-                closeBtn.addEventListener('click', close);
-                markAllBtn.addEventListener('click', ()=>{ data.forEach(x=>x.read=true); save(data); render(); });
-                backdrop.addEventListener('click', (e)=>{ if(e.target===backdrop) close(); });
-
-                render();
-            })();
-        </script>
-
-        <script>
-            // Sidebar text-link active handler (persist active selection)
-            (function () {
-                const anchors = Array.from(document.querySelectorAll('.sidebar a'));
-                const saved = (function () { try { return localStorage.getItem('activeSidebarLink'); } catch (e) { return null; } })();
-                const path = location.pathname || location.href;
-
-                function normalizePath(href) {
-                    try {
-                        // Support absolute and relative hrefs
-                        return new URL(href, location.origin).pathname.replace(/\/$/, '') || '/';
-                    } catch (e) {
-                        return href;
-                    }
-                }
-
-                anchors.forEach(a => {
-                    const href = a.getAttribute('href');
-                    if (!href) return;
-                    const hrefPath = normalizePath(href);
-                    const currentPath = (location.pathname || location.href).replace(/\/$/, '');
-
-                    const matches = (function() {
-                        if (saved && saved === href) return true;
-                        if (href === 'index.html' && (currentPath === '' || currentPath === '/' || currentPath.endsWith('index.html'))) return true;
-                        return currentPath.endsWith(hrefPath) || hrefPath === currentPath;
-                    })();
-
-                    if (matches) a.classList.add('active');
-
-                    a.addEventListener('click', function () {
-                        try { localStorage.setItem('activeSidebarLink', href); } catch (e) { }
-                        // update classes immediately for single-page feel
-                        anchors.forEach(x => x.classList.remove('active'));
-                        a.classList.add('active');
-                    });
-                });
-            })();
-        </script>
 </body>
 
 </html>
