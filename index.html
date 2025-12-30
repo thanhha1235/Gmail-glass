@@ -159,7 +159,9 @@
     </div>
   <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const SHEET_ID = "1E2XKNgjLvKc3eqdZv9WAXfgoprHpOWMnb-ixu5CrNq8";
+    const encoded = "MUUyWEtOZ2pMdktjM2VxZFp2OVdBWGZnb3BySHBPV01uYi1peHU1Q3JOcTg=";
+const SHEET_ID = atob(encoded);
+
     const SHEET_NAME = "Mail bán ra";
     const API_URL = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(SHEET_NAME)}`;
 
