@@ -130,6 +130,61 @@
             nav a { margin: 0 8px; }
             .card { padding: 25px; }
         }
+
+        /* -- thêm CSS nhấp nháy vào trong phần <style> -- */
+.blink {
+    display: inline-block;
+    animation: blink 0.5s steps(2, start) infinite;
+    color: var(--primary-color);
+    font-weight: 700;
+    color: red;
+    font-size: 25px;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* -- thêm animation nhẹ vào cuối <style> -- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cardPop {
+  from { opacity: 0; transform: translateY(8px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes brandFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes navUnderline {
+  from { width: 0; opacity: 0; transform: translateX(-10%); }
+  to { width: 60%; opacity: 1; transform: translateX(0); }
+}
+
+/* apply animations */
+header { animation: fadeInUp .45s ease both; }
+.card { animation: cardPop .55s cubic-bezier(.22,.9,.37,1) both; }
+.brand { animation: brandFloat 4s ease-in-out infinite; }
+
+/* subtle underline animation for nav links */
+nav a { position: relative; overflow: visible; }
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: rgba(255,255,255,0.95);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width .28s ease, left .28s ease;
+}
+nav a:hover::after { width: 60%; left: 50%; }
+
+/* keep blink noticeable but not harsh */
+.blink { animation-duration: .8s; font-size: 22px; }
     </style>
 </head>
 
@@ -179,7 +234,7 @@ const SHEET_ID = atob(encoded);
             infoBlock.innerHTML = `
                 <h1>Thông tin tài khoản</h1>
                 <p><strong>Loại:</strong> Gmail new ko dính phone</p>
-                <p><strong>Số lượng còn:</strong> ${acc}</p>
+                <p><strong>Số lượng còn:</strong> <span class="blink">${acc}</span></p>
                 <div class="meta"></div>
             `;
 
